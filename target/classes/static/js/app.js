@@ -7,7 +7,6 @@ var app = (function () {
     var _blueprints = [];
     var _canvas = null;
     var _ctx = null;
-    var _currentBlueprint = null;
 
     // Función privada para calcular puntos totales
     function _calculateTotalPoints() {

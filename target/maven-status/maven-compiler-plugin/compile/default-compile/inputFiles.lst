@@ -1,0 +1,15 @@
+D:\tmp\ARSW\LAB6\ARSWLAB06\src\main\java\edu\eci\arsw\blueprints\BlueprintsAPIApplication.java
+D:\tmp\ARSW\LAB6\ARSWLAB06\src\main\java\edu\eci\arsw\blueprints\persistence\BlueprintsPersistence.java
+D:\tmp\ARSW\LAB6\ARSWLAB06\src\main\java\edu\eci\arsw\blueprints\persistence\impl\Tuple.java
+D:\tmp\ARSW\LAB6\ARSWLAB06\src\main\java\edu\eci\arsw\blueprints\model\Point.java
+D:\tmp\ARSW\LAB6\ARSWLAB06\src\main\java\edu\eci\arsw\blueprints\filters\Filter.java
+D:\tmp\ARSW\LAB6\ARSWLAB06\src\main\java\edu\eci\arsw\blueprints\filters\impl\RedundancyFilter.java
+D:\tmp\ARSW\LAB6\ARSWLAB06\src\main\java\edu\eci\arsw\blueprints\services\BlueprintsServices.java
+D:\tmp\ARSW\LAB6\ARSWLAB06\src\main\java\edu\eci\arsw\blueprints\controllers\BlueprintAPIController.java
+D:\tmp\ARSW\LAB6\ARSWLAB06\src\main\java\edu\eci\arsw\blueprints\MainApp.java
+D:\tmp\ARSW\LAB6\ARSWLAB06\src\main\java\edu\eci\arsw\blueprints\persistence\BlueprintPersistenceException.java
+D:\tmp\ARSW\LAB6\ARSWLAB06\src\main\java\edu\eci\arsw\blueprints\persistence\impl\InMemoryBlueprintPersistence.java
+D:\tmp\ARSW\LAB6\ARSWLAB06\src\main\java\edu\eci\arsw\blueprints\filters\impl\UndersamplingFilter.java
+D:\tmp\ARSW\LAB6\ARSWLAB06\src\main\java\edu\eci\arsw\blueprints\model\Blueprint.java
+D:\tmp\ARSW\LAB6\ARSWLAB06\src\main\java\edu\eci\arsw\blueprints\persistence\BlueprintNotFoundException.java
+D:\tmp\ARSW\LAB6\ARSWLAB06\src\main\java\edu\eci\arsw\blueprints\AppConfig.java
