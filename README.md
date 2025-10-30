@@ -133,14 +133,67 @@ Ahora, continuaremos con la construción de un cliente 'grueso' con un API REST,
     var _currentBlueprint = null;
     ```
 
+    Ahora, modificaremos la función que maneja los clicks en el canvas de la forma:
 
+    ``` js
+    // Función privada para manejar clics o toques en el canvas
+    function _handleCanvasClick(x, y) {
+        // Si no hay un plano seleccionado, no hacer nada
+        if (!_currentBlueprint) {
+            console.warn("No hay blueprint seleccionado. Ignorando clic.");
+            return;
+        }
+        // Agregar el punto al blueprint actual (solo en memoria)
+        _currentBlueprint.points.push({ x: x, y: y });
+        console.log("Nuevo punto agregado:", { x, y });
+        // Repintar el blueprint con el nuevo punto
+        _drawBlueprint(_currentBlueprint);
+    }
+    ```
+   
+    También tendremos que modificar la función `openBlueprint` de la forma:
+
+    ``` js
+    openBlueprint: function (bpName) {
+        dataSource.getBlueprintsByNameAndAuthor(_author, bpName, function (bp) {
+            if (bp) {
+                _currentBlueprint = bp;
+                $("#currentBlueprint").text(bp.name);
+                _drawBlueprint(bp);
+                console.info("Blueprint abierto:", bp.name);
+            }
+        });
+    }
+    ```
+   
+    De esta forma, podremos obtener el funcionamiento deseado:
+
+    ![img.png](img/ss3.png)
+
+
+3. Ahora agregaremos el botón Save/Update. Respetando la arquitectura de módulos actual del cliente, haremos que al oprimirse el botón:
+   * Se haga PUT al API, con el plano actualizado, en su recurso REST correspondiente. 
+   * Se haga GET al recurso /blueprints, para obtener de nuevo todos los planos realizados. 
+   * Se calculen nuevamente los puntos totales del usuario.
+
+   Para lo anterior es necesario tener en cuenta:
+    * jQuery no tiene funciones para peticiones PUT o DELETE, por lo que es necesario 'configurarlas' manualmente a través del API para AJAX. Por ejemplo, para hacer una peticion PUT a un recurso /myrecurso:
+        ``` js
+        return $.ajax({
+            url: "/mirecurso",
+            type: 'PUT',
+            data: '{"prop1":1000,"prop2":"papas"}',
+            contentType: "application/json"
+        });
+        ```
     
+    Para éste podemos notar que la propiedad 'data' del objeto enviado a $.ajax debe ser un objeto jSON (en formato de texto). Si el dato que se quiere enviar es un objeto JavaScript, se puede convertir a jSON con:
 
+    ``` js
+    JSON.stringify(objetojavascript),
+    ```
 
-
-
-
-
+   * Como en este caso se tienen tres operaciones basadas en callbacks, y que las mismas requieren realizarse en un orden específico, es necesario tener en cuenta cómo usar las promesas de JavaScript mediante alguno de los ejemplos disponibles.
 
 
 

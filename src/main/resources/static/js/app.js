@@ -30,9 +30,16 @@ var app = (function () {
 
     // Función privada para manejar clics o toques en el canvas
     function _handleCanvasClick(x, y) {
-        console.log("Click detectado en:", x, y);
-        alert("Click en coordenadas: " + x + ", " + y);
-        // Más adelante se podría agregar lógica para dibujar puntos o añadir coordenadas al blueprint actual
+        // Si no hay un plano seleccionado, no hacer nada
+        if (!_currentBlueprint) {
+            console.warn("No hay blueprint seleccionado. Ignorando clic.");
+            return;
+        }
+        // Agregar el punto al blueprint actual (solo en memoria)
+        _currentBlueprint.points.push({ x: x, y: y });
+        console.log("Nuevo punto agregado:", { x, y });
+        // Repintar el blueprint con el nuevo punto
+        _drawBlueprint(_currentBlueprint);
     }
 
     // API pública del módulo
@@ -66,15 +73,17 @@ var app = (function () {
                     table.append(row);
                 });
 
-                $("#totalPoints").text(_blueprints.map(bp => bp.points.length).reduce((a, b) => a + b, 0));
+                $("#totalPoints").text(_calculateTotalPoints());
             });
         },
 
         openBlueprint: function (bpName) {
             dataSource.getBlueprintsByNameAndAuthor(_author, bpName, function (bp) {
                 if (bp) {
+                    _currentBlueprint = bp;
                     $("#currentBlueprint").text(bp.name);
                     _drawBlueprint(bp);
+                    console.info("Blueprint abierto:", bp.name);
                 }
             });
         },
