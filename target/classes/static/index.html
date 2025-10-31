@@ -67,7 +67,12 @@
     <div class="col-md-6">
         <h4>Current blueprint: <span id="currentBlueprint">None</span></h4>
         <canvas id="blueprintCanvas" width="500" height="500" style="border:1px solid black;"></canvas>
+        <br>
+        <button class="btn btn-success mt-3" onclick="app.saveBlueprint()">💾 Save / Update</button>
+        <button class="btn btn-secondary mt-3 ml-2" onclick="app.createNewBlueprint()">➕ Create new blueprint</button>
+        <button class="btn btn-danger mt-3 ml-2" onclick="app.deleteBlueprint()">🗑️ Delete</button>
     </div>
+
 </div>
 
 <!-- Asociación del evento al botón -->

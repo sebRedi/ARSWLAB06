@@ -102,4 +102,8 @@
             existing.setPoints(updatedBlueprint.getPoints());
         }
 
+        public void deleteBlueprint(String author, String name) throws BlueprintNotFoundException {
+            bpp.deleteBlueprint(author, name);
+        }
+
     }

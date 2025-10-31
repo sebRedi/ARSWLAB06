@@ -7,6 +7,7 @@ import edu.eci.arsw.blueprints.persistence.BlueprintPersistenceException;
 import edu.eci.arsw.blueprints.persistence.BlueprintsPersistence;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collections;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -74,6 +75,19 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence {
             throw new BlueprintNotFoundException("No blueprints found for the specified author: " + author);
         }
         return result;
+    }
+
+    @Override
+    public void deleteBlueprint(String author, String name) throws BlueprintNotFoundException {
+        Set<Blueprint> authorBlueprints = Collections.singleton(blueprints.get(author));
+        if (authorBlueprints == null) {
+            throw new BlueprintNotFoundException("El autor no existe: " + author);
+        }
+
+        boolean removed = authorBlueprints.removeIf(bp -> bp.getName().equals(name));
+        if (!removed) {
+            throw new BlueprintNotFoundException("El blueprint no existe: " + name);
+        }
     }
 
     public void updateBlueprint(String author, String name, Blueprint newBp) throws BlueprintNotFoundException {
