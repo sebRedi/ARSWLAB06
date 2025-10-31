@@ -448,7 +448,9 @@ Ahora, continuaremos con la construción de un cliente 'grueso' con un API REST,
    ![img.png](img/ss6.png)
     
 
+## Conclusión
 
+El desarrollo de este laboratorio permitió consolidar los conocimientos en la construcción de clientes web que interactúan con servicios REST, aplicando principios de modularización, asincronía y manipulación dinámica del DOM. A través del uso de HTML5, CSS3, JavaScript y jQuery, se logró implementar un cliente grueso completamente funcional que permite visualizar, crear, actualizar y eliminar planos (blueprints) consumiendo el API desarrollado previamente. Asimismo, la integración de eventos en el canvas posibilitó la captura de puntos y el redibujado en tiempo real, mejorando la experiencia de usuario. El uso de promesas y peticiones AJAX garantizó una comunicación eficiente con el backend y un control ordenado del flujo de ejecución. En conjunto, el laboratorio fortaleció la comprensión de la arquitectura cliente-servidor y la aplicación práctica de conceptos fundamentales en el desarrollo web moderno.
 
 
 
